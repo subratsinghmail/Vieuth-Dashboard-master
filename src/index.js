@@ -2,16 +2,37 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import {BrowserRouter as Router} from 'react-router-dom'
+import { BrowserRouter as Router } from 'react-router-dom'
 import * as serviceWorker from './serviceWorker';
-// import "bootstrap-css-only/css/bootstrap.min.css";
-// import "mdbreact/dist/css/mdb.css";
+import { ApolloClient, HttpLink, InMemoryCache, ApolloProvider } from "@apollo/client";
+import { Provider } from "react-redux";
+import store from "./store";
+const client = new ApolloClient({
+  cache: new InMemoryCache(),
+  connectToDevTools: true,
+  link: new HttpLink({
+    uri: 'https://vieuth-backend.herokuapp.com/graphql',
+    //uri: 'http://localhost:4000/graphql'
+  }),
+  fetchOptions: {
+    mode: 'no-cors',
+  },
+  defaultOptions: {
+    watchQuery: {
+      errorPolicy: 'all'
+    }
+  }
+});
 
 ReactDOM.render(
   <React.StrictMode>
-  <Router>
-    <App />
-  </Router>
+    <ApolloProvider client={client}>
+      <Provider store={store}>
+        <Router>
+          <App />
+        </Router>
+      </Provider>
+    </ApolloProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

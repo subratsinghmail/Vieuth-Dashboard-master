@@ -2,8 +2,9 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
-import { BrowserRouter as Router,Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 // import PrivateRoute from '../private-route/'
+import NavbarPage from '../CommonLayout/Navbar'
 import Navbar from './Navbar'
 import Home from './Home'
 import Profile from './Profile'
@@ -14,24 +15,24 @@ const DashboardHome = () => {
 }
 
 class Dashboard extends Component {
-    
+
   onLogoutClick = e => {
     e.preventDefault();
     this.props.logoutUser();
   };
 
-render() {
+  render() {
     const { user } = this.props.auth;
-return (
-      <div>
-      
-      <Navbar/>
-      <div style={{marginTop:"10vh"}}>
-        
-        <Home/>
-        
-        
-      </div>
+    return (
+      <div style={{ marginBottom: "100px", }}>
+        <NavbarPage />
+        <Navbar />
+        <div style={{ marginTop: "10vh", marginLeft: "2vw" }} >
+
+          <Home />
+
+
+        </div>
         {/* <div style={{ height: "75vh" }} className="container valign-wrapper">
           <div className="row">
             <div className="col s12 center-align">
@@ -54,9 +55,9 @@ return (
           </div>
         
       </div> */}
-     
+
       </div>
-     
+
     );
   }
 }
@@ -72,7 +73,7 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
- { logoutUser }
+  { logoutUser }
 )(Dashboard);
 
 
