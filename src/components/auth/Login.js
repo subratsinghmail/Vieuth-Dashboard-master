@@ -33,10 +33,8 @@ mutation login($email:String!, $password:String!){
 const sendEmailMutation=gql`
   mutation{
   verifyUserEmail(input:{
-
   })
   }
-
 `
 
 class Login extends Component {
@@ -96,7 +94,7 @@ this.props.loginUser(userData)
   })
   }
 render() {
-    const { errors} = this.state;
+    const {errors} = this.state;
 return (
   <ApolloProvider client={client}>            
             <MDBContainer fluid className="background"> 

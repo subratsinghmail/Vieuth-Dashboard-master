@@ -1,4 +1,5 @@
 import { GET_PROFILE } from "../actions/types"
+import { SET_PROFILE } from "../actions/types"
 
 const initialState={
     profile:null,
@@ -9,7 +10,14 @@ export default function(state=initialState,action){
     switch(type){
         case GET_PROFILE:
             return {...state,profile:payload}
+        case SET_PROFILE:
+            return {
+                ...state,
+                  profile:payload
+                };
+          
         default:
             return state
     }
 }
+

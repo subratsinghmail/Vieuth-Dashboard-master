@@ -38,14 +38,20 @@ function Profile(props) {
             <MDBCol  lg="4" md="4" size="12" sm="4">
               
               <img src={logo} width="50%" className="rounded mx-auto d-block" alt=""/>
-              <h4 className="text-center">{props.profile.fullName}</h4>
+              <h4 className="text-center">{props.profile.fName+" "+props.profile.lName}</h4>
+              <div className="" style={{display:'flex',justifyContent:'space-around'}}>
+                <div> <i style={{color:'rgb(57, 70, 211)'}} className="fab fa-twitter fa-2x"></i></div>
+                <div> <i style={{color:'rgb(125, 68, 229)'}} className="fab fa-facebook fa-2x"></i></div>
+                <div> <i style={{color:'black'}} className="fab fa-github fa-2x"></i></div>
+                <div><i style={{color:'rgb(57, 70, 211)'}} className="fab fa-linkedin fa-2x"></i></div>
+              </div>
               <MDBCard>
               <MDBCardBody>
                 <h6><i className="fas fa-briefcase mr-2"></i>{props.profile.website}</h6>
                 <h6><i className="fas fa-home mr-2"></i>{props.profile.address}</h6>
                 <h6><i className="fas fa-envelope mr-2"></i>mridulkh0302@gmail.com</h6>
-                <h6><i className="fas fa-phone-alt mr-2"></i>{props.profile.dob}</h6>
-                <Link to='/dashboard/profile/edit-profile'><h6 style={{float:'right'}}><i class="fa fa-pencil-square-o" aria-hidden="true"></i></h6></Link><br/>
+                <h6><i className="fas fa-phone-alt mr-2"></i>{props.profile.contact}</h6>
+                <Link to='/dashboard/profile/edit-profile'><h6 style={{float:'right'}}><i class="fa fa-pencil-square-o" ></i></h6></Link><br/>
                 <hr/>
                 <h5><i className="fas fa-asterisk mr-2"></i>Skills</h5>
                 <h6>Adobe Photoshop</h6>
@@ -56,8 +62,6 @@ function Profile(props) {
                 <MDBProgress value={50} className="my-2">50%</MDBProgress>
                 <hr/>
                 <h5><i className="fas fa-globe mr-2"></i>Languages</h5>
-                <h6>Adobe Photoshop</h6>
-                <MDBProgress value={50} className="my-2">50%</MDBProgress>
                 <h6>English</h6>
                 <MDBProgress value={50} className="my-2">50%</MDBProgress>
                 <h6>Hindi</h6>

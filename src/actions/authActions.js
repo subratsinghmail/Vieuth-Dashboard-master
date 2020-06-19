@@ -5,6 +5,7 @@ import { GET_ERRORS, SET_CURRENT_USER, USER_LOADING } from './types';
 /*
 
 */
+
  // register user
 export const registerUser = (newUser, history) => (dispatch) => {
   if (
@@ -22,7 +23,7 @@ export const registerUser = (newUser, history) => (dispatch) => {
 };
 
          // Login - get user token
-export const loginUser = (userData) => (dispatch) => {
+export const loginUser = (userData,history) => (dispatch) => {
   if (
      userData.token!==null
   ) {
@@ -32,8 +33,8 @@ export const loginUser = (userData) => (dispatch) => {
       token:userData.token
     };
     localStorage.setItem('user', JSON.stringify(user));
-    
     dispatch(setCurrentUser(user));
+    history.push('/dashboard')
   } else {
     dispatch({
       type: GET_ERRORS,
@@ -63,8 +64,10 @@ export const setUserLoading = () => {
 // Log user out
 export const logoutUser = () => (dispatch) => {
   // Remove token from local storage
-  localStorage.removeItem('user');
-
+  
+  // localStorage.removeItem('user');
+  localStorage.clear();
+ 
   // Set current user to empty object {} which will set isAuthenticated to false
   dispatch(setCurrentUser({}));
 };
